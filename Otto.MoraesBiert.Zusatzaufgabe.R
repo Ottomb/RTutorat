@@ -10,7 +10,6 @@ setwd("C:/Users/ottom/Desktop/Tutorat R")
 StudPerf <- read.csv("StudentsPerformance.csv", header = TRUE, sep = ";", fill = TRUE, quote = "")
 summarise(StudPerf)
 
-
 #b
 ggplot(data = StudPerf, aes(x = "", y = math_score)) +
   geom_boxplot() +
@@ -20,11 +19,8 @@ ggplot(data = StudPerf, aes(x = "", y = math_score)) +
 
 #c
 Mittelwert <- (mean(StudPerf$math_score) + mean(StudPerf$reading_score) + mean(StudPerf$writing_score)) / 3
-Median <- StudPerf %>% 
-  select(math_score, writing_score, reading_score) %>% 
-  median()
 Median <- data.frame(Werte = c(StudPerf[,"math_score"], StudPerf[,"writing_score"], StudPerf[,"reading_score"]))
-median(Median$Werte)
+Medianfin <- median(Median$Werte)
 
 #2
 ggplot(data = StudPerf, aes(x = reading_score, y = writing_score)) +
@@ -44,5 +40,3 @@ Prep <- StudPerf %>%
 NoPrep <- StudPerf %>% 
   filter(test_preparation_course == "none") %>% 
   sample_n(300)
-
-

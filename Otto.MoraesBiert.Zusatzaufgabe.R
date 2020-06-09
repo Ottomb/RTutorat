@@ -34,6 +34,10 @@ ggplot(data = StudPerf, aes(x = reading_score, y = writing_score)) +
 #c
 lineareRegression[["coefficients"]][["writing_score"]] * 75 + lineareRegression[["coefficients"]][["(Intercept)"]]
 
+#d
+lineareRegressionGender <- lm(formula = reading_score ~ writing_score + gender, data = StudPerf)
+summary(lineareRegressionGender)
+
 #3
 #a
 Prep <- StudPerf %>% 

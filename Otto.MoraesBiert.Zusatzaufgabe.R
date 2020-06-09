@@ -4,8 +4,8 @@ library(tidyverse)
 library(dplyr)
 library(ggthemes)
 
-
 #1
+#a
 setwd("C:/Users/ottom/Desktop/Tutorat R")
 StudPerf <- read.csv("StudentsPerformance.csv", header = TRUE, sep = ";", fill = TRUE, quote = "")
 summarise(StudPerf)
@@ -49,3 +49,16 @@ NoPrep <- StudPerf %>%
   filter(test_preparation_course == "none") %>% 
   sample_n(300) %>% 
   select(math_score)
+
+t.test(Prep, NoPrep, alternative = "two.sided", mu=0, conf.level = 0.95)
+
+#b
+PrepFull <- StudPerf %>% 
+  filter(test_preparation_course == "completed") %>% 
+  select(math_score)
+
+NoPrepFull <- StudPerf %>% 
+  filter(test_preparation_course == "none") %>% 
+  select(math_score)
+
+t.test(PrepFull, NoPrepFull, alternative = "two.sided", mu=0, conf.level = 0.95)
